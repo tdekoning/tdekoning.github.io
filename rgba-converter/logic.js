@@ -67,12 +67,13 @@
 
     // Converter for hex colors
     hex: function( hexString ) {
+      hexString = hexString.replace('#', '');
       var rgbArr = [], hexPair;
 
       function getHexPartByIndex( index ) {
         switch( hexString.length ) {
           case 3:
-            return hexString[index];
+            return hexString[index] + hexString[index];
           default:
             index *= 2;
             return hexString[index] + hexString[index+1];
@@ -151,7 +152,7 @@
 
   var performcalculation = function() {
     var rgbaValue = document.getElementById( 'rgba' ).value;
-    var backgroundValue = document.getElementById( 'background' ).value;
+    var backgroundValue = document.getElementById( 'background' ).value || '#ffffff';
     
     if( !rgbaValue || !backgroundValue ) {
       // No values supplied.
